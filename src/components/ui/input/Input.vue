@@ -32,17 +32,13 @@ const modelValue = useVModel(props, 'modelValue', emits, {
       placeholder="Заполните поле"
       :class="
         cn(
-          'flex h-9 w-full rounded-md border bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 disabled:cursor-not-allowed disabled:opacity-50',
-          props.error
-            ? 'border-red-500 focus-visible:ring-red-500'
-            : 'border-input focus-visible:ring-ring',
+          'flex h-10 w-full rounded-md border bg-card px-3 py-2 text-sm transition-all duration-200 file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:border-primary/50 disabled:cursor-not-allowed disabled:opacity-50',
+          props.error ? 'border-destructive focus-visible:ring-destructive/50' : 'border-input',
           props.class,
         )
       "
     />
-    <span
-      v-if="props.error"
-      class="text-red-500 text-[10px] mt-1 absolute top-full left-0 transform -translate-y-1/3"
+    <span v-if="props.error" class="text-destructive text-xs mt-1 absolute top-full left-0"
       >Поле обязательно к заполнению</span
     >
   </div>
