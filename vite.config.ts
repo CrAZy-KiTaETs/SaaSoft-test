@@ -6,6 +6,7 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 import path from 'node:path'
 
 export default defineConfig({
+  base: '/SaaSoft-test/',
   plugins: [vue(), vueDevTools(), tailwindcss()],
   resolve: {
     alias: {
