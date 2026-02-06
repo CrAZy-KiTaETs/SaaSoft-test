@@ -11,13 +11,18 @@ export const useAccountsStore = defineStore('accounts', () => {
       try {
         accounts.value = JSON.parse(stored)
       } catch (e) {
-        console.error('Failed to load accounts from localStorage', e)
+        console.error('Ошибка при загрузке локального хранилища', e)
       }
     }
   }
 
   const saveToStorage = () => {
-    localStorage.setItem('accounts', JSON.stringify(accounts.value))
+    const validAccounts = accounts.value.filter((account) => {
+      if (!account.login.trim()) return false
+      if (account.type === 'local' && !account.password?.trim()) return false
+      return true
+    })
+    localStorage.setItem('accounts', JSON.stringify(validAccounts))
   }
 
   const addAccount = () => {
